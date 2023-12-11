@@ -61,8 +61,8 @@
                             <a class="btn btn-primary" href="/receita/novo"> <i class="nav-icon fas fa-plus"></i></a>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body">
-                            <table class="table table-bordered table table-sm">
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover text-nowrap table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th style="width: 35px">#</th>

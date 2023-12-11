@@ -51,6 +51,17 @@
             </li>
           </ul>
         </li>
+
+
+        <li class="nav-item">
+          <a href="/usuario/trocar_senha" class="nav-link">
+            <p>
+              Trocar senha
+              <i class="fas fa-lock right"></i>
+            </p>
+          </a>          
+        </li>
+
       </ul>
     </nav>
   </div>

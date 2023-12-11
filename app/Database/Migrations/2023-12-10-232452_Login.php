@@ -15,15 +15,15 @@ class Login extends Migration
                 'usigned'           => true,
                 'auto_increment'    => true
             ],
-            'usuario'               => [
-                'type'              => 'VARCHAR',
-                'constraint'        => 128
-            ],
             'senha'                 => [
                 'type'              => 'VARCHAR',
                 'constraint'        => 255
             ],
             'nome'                  => [
+                'type'              => 'VARCHAR',
+                'constraint'        => 255
+            ],
+            'email'                 => [
                 'type'              => 'VARCHAR',
                 'constraint'        => 255
             ],

@@ -18,6 +18,26 @@
 
 <body class="hold-transition login-page">
     <div class="login-box">
+
+
+        <?php
+        $session = session();
+        $alert = $session->get('alert');
+        ?>
+
+
+        <?php if (isset($alert)) : ?>
+            <?php if ($alert == 'error_login') : ?>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="alert alert-danger alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            Email ou a senha estão incorretos!
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
@@ -28,15 +48,15 @@
 
                 <form action="/usuario/autenticar" method="post">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="usuario" placeholder="Usuario">
+                        <input type="email" class="form-control" name="email" placeholder="Email" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-user"></span>
+                                <span class="fas fa-envelope"></span>
                             </div>
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" name="senha" class="form-control" placeholder="Senha">
+                        <input type="password" name="senha" class="form-control" placeholder="Senha" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -49,7 +69,7 @@
                         </div>
                         <!-- /.col -->
                     </div>
-                </form>               
+                </form>
             </div>
             <!-- /.card-body -->
         </div>

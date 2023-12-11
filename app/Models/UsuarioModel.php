@@ -9,10 +9,10 @@ class UsuarioModel extends Model
     protected $table = 'usuario';
     protected $primaryKey = 'id_usuario';
     protected $allowedFields = [
-        'id_usuario',
-        'usuario',
+        'id_usuario',       
         'senha',
         'nome',
+        'email',
     ];
 
     protected $useTimestamps = true;
