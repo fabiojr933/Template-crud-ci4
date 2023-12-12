@@ -7,10 +7,12 @@ use CodeIgniter\Controller;
 
 class Receita extends Controller
 {
+    private $session;
     private $receita_model;
 
     function __construct()
     {
+        $this->session = session();
         $this->receita_model = new ReceitaModel();
     }
 
@@ -33,7 +35,7 @@ class Receita extends Controller
 
     public function store()
     {
-        $session = session();
+
         $request = request();
         $ativo = $request->getPost('ativo') == 'on' ? 'S' : 'N';
         $id_receita = $request->getPost('id_receita');
@@ -44,13 +46,27 @@ class Receita extends Controller
 
         //Update
         if (isset($id_receita)) {
-            $session->setFlashdata('alert', 'success_alterado');
+            $this->session->setFlashdata(
+                'alert',
+                [
+                    'tipo'  => 'sucesso',
+                    'cor'   => 'primary',
+                    'titulo' => 'Receita alterada com sucesso!'
+                ]
+            );
             $this->receita_model->where('id_receita', $id_receita)
                 ->set($dados)
                 ->update();
         } else {
-            //insert          
-            $session->setFlashdata('alert', 'success_create');
+            //insert  
+            $this->session->setFlashdata(
+                'alert',
+                [
+                    'tipo'  => 'sucesso',
+                    'cor'   => 'primary',
+                    'titulo' => 'Receita cadastrada com sucesso!'
+                ]
+            );
             $this->receita_model->insert($dados);
         }
         return redirect()->to('receita');
@@ -74,8 +90,14 @@ class Receita extends Controller
         $this->receita_model->where('id_receita', $id)
             ->delete();
 
-        $session = session();
-        $session->setFlashdata('alert', 'success_excluido');
+        $this->session->setFlashdata(
+            'alert',
+            [
+                'tipo'  => 'sucesso',
+                'cor'   => 'primary',
+                'titulo' => 'Receita excluída com sucesso!'
+            ]
+        );
         return redirect()->to('/receita');
     }
 

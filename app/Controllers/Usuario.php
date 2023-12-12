@@ -7,10 +7,12 @@ use CodeIgniter\Controller;
 
 class Usuario extends Controller
 {
+    private $session;
     private $usuario_model;
 
     function __construct()
     {
+        $this->session = session();
         $this->usuario_model = new UsuarioModel();
     }
 
@@ -29,14 +31,29 @@ class Usuario extends Controller
                 ->where('senha', $senhaMD5)
                 ->first();
 
-            $session = session();
+
             if (!empty($usuario)) {
-                $session->set('usuario', $usuario['nome']);
-                $session->set('email',   $usuario['email']);
-                $session->setFlashdata('alert', 'success_login');
+                $this->session->setFlashdata(
+                    'alert',
+                    [
+                        'tipo'  => 'erro',
+                        'cor'   => 'primary',
+                        'titulo' => 'Bem vindo'
+                    ]
+                );
+                $this->session->set('usuario', $usuario['nome']);
+                $this->session->set('id_usuario',   $usuario['id_usuario']);
+                $this->session->set('email',   $usuario['email']);
                 return redirect()->to('/inicio');
             } else {
-                $session->setFlashdata('alert', 'error_login');
+                $this->session->setFlashdata(
+                    'alert',
+                    [
+                        'tipo'  => 'erro',
+                        'cor'   => 'danger',
+                        'titulo' => 'Email ou a senha estão incorretos!'
+                    ]
+                );
                 return redirect()->to('/login');
             }
         }
@@ -49,7 +66,7 @@ class Usuario extends Controller
 
     public function store()
     {
-        $session = session();
+
         $request = request();
         $senha = $request->getPost('senha');
         if (is_string($senha)) {
@@ -61,11 +78,25 @@ class Usuario extends Controller
             ];
             $existe = $this->usuario_model->where('email', $dados['email'])->first();
             if ($existe) {
-                $session->setFlashdata('alert', 'error_registrar');
+                $this->session->setFlashdata(
+                    'alert',
+                    [
+                        'tipo'  => 'erro',
+                        'cor'   => 'danger',
+                        'titulo' => 'Email esse email ja esta cadastrado!'
+                    ]
+                );
                 return redirect()->to('/login');
             } else {
                 $this->usuario_model->insert($dados);
-                $session->setFlashdata('alert', 'success_registrar');
+                $this->session->setFlashdata(
+                    'alert',
+                    [
+                        'tipo'  => 'erro',
+                        'cor'   => 'primary',
+                        'titulo' => 'Usuario cadastrado com sucesso!!'
+                    ]
+                );
                 return redirect()->to('/login');
             }
         }

@@ -8,36 +8,14 @@
             ?>
 
             <?php if (isset($alert)) : ?>
-
-                <?php if ($alert == 'success_create') : ?>
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="alert alert-primary alert-dismissible">
+                            <div class="alert alert-<?php echo $alert['cor'] ?> alert-dismissible">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                Receita cadastrada com sucesso!
+                                <?php echo $alert['titulo'] ?>
                             </div>
                         </div>
                     </div>
-                <?php elseif ($alert == 'success_alterado') : ?>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="alert alert-primary alert-dismissible">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                Receita alterada com sucesso!
-                            </div>
-                        </div>
-                    </div>
-                <?php elseif ($alert == 'success_excluido') : ?>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="alert alert-primary alert-dismissible">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                Receita excluída com sucesso!
-                            </div>
-                        </div>
-                    </div>
-                <?php endif; ?>
-
             <?php endif; ?>
             <div class="row mb-2">
                 <div class="col-sm-6">
