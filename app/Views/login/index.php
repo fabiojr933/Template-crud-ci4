@@ -37,6 +37,26 @@
                     </div>
                 </div>
             <?php endif; ?>
+            <?php if ($alert == 'error_registrar') : ?>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="alert alert-danger alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            Email esse email ja esta cadastrado!
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <?php if ($alert == 'success_registrar') : ?>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="alert alert-primary alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            Usuario cadastrado com sucesso!
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
         <?php endif; ?>
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
@@ -69,7 +89,8 @@
                         </div>
                         <!-- /.col -->
                     </div>
-                </form>
+                </form><br>
+                <a href="/registrar" class="text-center">Criar uma conta?</a>
             </div>
             <!-- /.card-body -->
         </div>

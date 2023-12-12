@@ -20,7 +20,9 @@ $routes->get('/receita/visualizar/(:num)', 'Receita::visualizar/$1');;
 
 
 $routes->get('/login', 'Usuario::index');
+$routes->get('/registrar', 'usuario::registrar');
 $routes->post('/usuario/autenticar', 'usuario::autenticar');
+$routes->post('/usuario/store', 'usuario::store');
 $routes->post('/usuario/mudarSenha', 'usuario::mudarSenha');
 $routes->get('/usuario/sair', 'usuario::sair');
 $routes->get('/usuario/trocar_senha', 'usuario::trocaSenha');

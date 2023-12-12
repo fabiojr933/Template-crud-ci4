@@ -1,3 +1,16 @@
+<?php
+$session = session();
+$email = $session->get('email');
+if ($email == null) {
+  echo
+  "<script>
+ window.location.href = '/login/';
+ </script>";
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -11,7 +24,7 @@
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 
-<body class=" hold-transition sidebar-mini">
+<body class=" hold-transition sidebar-mini text-sm">
   <div class="wrapper">
 
     <?php include_once('navbar.php') ?>
